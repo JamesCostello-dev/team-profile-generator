@@ -1,11 +1,13 @@
 'use strict';
 
 const inquier = require('inquirer');
+const fs = require('fs');
 
-const Employee = require('./lib/Employee');
-const Engineer = require('./lib/Engineer');
-const Intern = require('./lib/Intern');
-const Manager = require('./lib/Manager');
+const generate = require('./src/template.js')
+
+const Engineer = require('./lib/Engineer.js');
+const Intern = require('./lib/Intern.js');
+const Manager = require('./lib/Manager.js');
 
 const addManager = () => {
   return inquier.prompt([
@@ -16,7 +18,7 @@ const addManager = () => {
     {
       type: 'number',
       message: 'Enter manager ID',
-      name: 'manId',
+      name: 'id',
     },
     {
       message: 'Enter manager email',
@@ -39,7 +41,7 @@ const addEngineer = () => {
     {
       type: 'number',
       message: 'Enter engineer ID',
-      name: 'engId',
+      name: 'id',
     },
     {
       message: 'Enter engineer email',
@@ -61,7 +63,7 @@ const addIntern = () => {
     {
       type: 'number',
       message: 'Enter intern ID',
-      name: 'intId',
+      name: 'id',
     },
     {
       message: 'Enter intern email',
@@ -74,9 +76,27 @@ const addIntern = () => {
   ]);
 };
 
+const writeFile = (data) => {
+  return new Promise((resolve, reject) => {
+    fs.writeFile('./dist/index.html', data, err => {
+      if (err) {
+        reject(err);
+        return;
+      }
+
+      resolve({
+        ok: true,
+        message: 'File created!'
+      });
+    });
+  });
+};
+
 addManager()
   .then(addEngineer)
   .then(addIntern)
+  .then(generate)
+  .then(writeFile)
   .catch(err => {
     console.log(err);
   });
