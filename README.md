@@ -17,9 +17,7 @@ git clone repo > npm install inquirer > npm init
 
 ## Usage
 
-This project is intended for users who want to manager teams.
-
-![Alt text](assets/img/screenshot.jpg "README Generator")
+This project is intended for users who manage teams.
 
 ## Credits
 
