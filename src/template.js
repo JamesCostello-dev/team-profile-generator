@@ -1,6 +1,5 @@
 'use strict';
 
-const inquier = require('inquirer');
 const Engineer = require('../lib/Engineer.js');
 const Intern = require('../lib/Intern.js');
 const Manager = require('../lib/Manager.js');
@@ -30,36 +29,36 @@ const generatePage = () => {
   <div class="card-deck">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">${Manager.name}</h5>
+        <h5 class="card-title">${this.name}</h5>
         <div class="card" style="width: 18rem;">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">${Manager.id}</li>
-            <li class="list-group-item">${Manager.email}</li>
-            <li class="list-group-item">${Manager.officeNumber}</li>
+            <li class="list-group-item">${this.name}</li>
+            <li class="list-group-item">${this.name}</li>
+            <li class="list-group-item">${this.name}</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">${Engineer.name} \n\ Engineer</h5>
+        <h5 class="card-title">${this.name}</h5>
         <div class="card" style="width: 18rem;">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">${Engineer.id}</li>
-            <li class="list-group-item">${Engineer.email}</li>
-            <li class="list-group-item">${Engineer.github}</li>
+            <li class="list-group-item">${this.name}</li>
+            <li class="list-group-item">${this.name}</li>
+            <li class="list-group-item">${this.name}</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">${Intern.name} \n\ Intern</h5>
+        <h5 class="card-title">${this.name}</h5>
         <div class="card" style="width: 18rem;">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">${Intern.id}</li>
-            <li class="list-group-item">${Intern.email}</li>
-            <li class="list-group-item">${Intern.school}</li>
+            <li class="list-group-item">${this.name}</li>
+            <li class="list-group-item">${this.name}</li>
+            <li class="list-group-item">${this.name}</li>
           </ul>
         </div>
       </div>

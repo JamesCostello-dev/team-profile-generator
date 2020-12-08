@@ -1,8 +1,8 @@
 {
   "name": "team-profile-generator",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "## Description",
+  "main": "app.js",
   "directories": {
     "lib": "lib"
   },
