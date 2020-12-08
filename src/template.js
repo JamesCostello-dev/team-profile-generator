@@ -1,74 +1,33 @@
 'use strict';
 
-const Engineer = require('../lib/Engineer.js');
-const Intern = require('../lib/Intern.js');
-const Manager = require('../lib/Manager.js');
+const Employee = require('../lib/Employee');
+const Engineer = require('../lib/Engineer');
+const Intern = require('../lib/Intern');
+const Manager = require('../lib/Manager');
 
-const generatePage = () => {
-  return `
-  <!DOCTYPE html>
-<html lang="en">
+const temp = (data) => {
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  const managers = data.filter(Employee => Employee.role === 'Manager')
+  const engineers = data.filter(Employee => Employee.role === 'Engineer')
+  const interns = data.filter(Employee => Employee.role === 'Intern')
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  const managerCard = managers.map(managerCard => {
+    managerCard = `<div class="card-deck">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">${managers.getName()}</h5>
+          <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">${managers.getId()}</li>
+              <li class="list-group-item">${managers.getEmail()}</li>
+              <li class="list-group-item">${managers.getOfficeNumber()}</li>
+            </ul>
+          </div>
+        </div>`
 
-  <title>Team Profile Generator</title>
+    return managerCard
+  })
 
-</head>
-
-<nav class="navbar navbar-dark bg-dark justify-content-center">
-  <span class="navbar-brand mb-0 h1">My Team</span>
-</nav>
-
-<body>
-
-  <div class="card-deck">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">${this.name}</h5>
-        <div class="card" style="width: 18rem;">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">${this.name}</li>
-            <li class="list-group-item">${this.name}</li>
-            <li class="list-group-item">${this.name}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">${this.name}</h5>
-        <div class="card" style="width: 18rem;">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">${this.name}</li>
-            <li class="list-group-item">${this.name}</li>
-            <li class="list-group-item">${this.name}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">${this.name}</h5>
-        <div class="card" style="width: 18rem;">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">${this.name}</li>
-            <li class="list-group-item">${this.name}</li>
-            <li class="list-group-item">${this.name}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</body>
-
-</html>
-  `
 };
 
-module.exports = generatePage;
+module.exports = temp;

@@ -2,11 +2,12 @@
 
 const inquirer = require('inquirer');
 
+const Employee = require('../lib/Employee');
 const Engineer = require('../lib/Engineer');
 const Intern = require('../lib/Intern');
 const Manager = require('../lib/Manager');
 
-const index = [];
+const data = [];
 
 const start = async () => {
   await inquirer.prompt([
@@ -31,7 +32,7 @@ const start = async () => {
 }
 
 const addManager = async () => {
-  await inquirer.prompt([
+  const Employee = await inquirer.prompt([
     {
       type: 'input',
       message: 'What is your name?',
@@ -51,6 +52,7 @@ const addManager = async () => {
       type: 'number',
       message: 'What is your office phone number?',
       name: 'officeNumber',
+
     },
     {
       type: 'list',
@@ -65,11 +67,14 @@ const addManager = async () => {
         }
       }
     },
-  ])
-}
+  ]).then(({ name, id, email, officeNumber }) => {
+    this.Manager = new Manager(Employee.name, Employee.id, Employee.email, Employee.officeNumber);
+  });
+  data.push(this.Manager);
+};
 
 const addEngineer = async () => {
-  await inquirer.prompt([
+  const Employee = await inquirer.prompt([
     {
       type: 'input',
       message: 'What is your name?',
@@ -102,12 +107,15 @@ const addEngineer = async () => {
           return;
         }
       }
-    },
-  ])
-}
+    }
+  ]).then(({ name, id, email, github }) => {
+    this.Engineer = new Engineer(Employee.name, Employee.id, Employee.email, Employee.github);
+  });
+  data.push(this.Engineer);
+};
 
 const addIntern = async () => {
-  await inquirer.prompt([
+  const Employee = await inquirer.prompt([
     {
       type: 'input',
       message: 'What is your name?',
@@ -141,7 +149,10 @@ const addIntern = async () => {
         }
       }
     },
-  ])
-}
+  ]).then(({ name, id, email, shcool }) => {
+    this.Intern = new Intern(Employee.name, Employee.id, Employee.email, Employee.shcool);
+  });
+  data.push(this.Intern);
+};
 
 module.exports = start;
